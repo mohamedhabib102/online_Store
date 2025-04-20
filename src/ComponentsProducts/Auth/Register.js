@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./MainStyle.css";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
+import { useAuth } from "../Context/Context";
 
 
 
@@ -14,6 +15,7 @@ function Register(){
     // const [passwordr, setPasswordr] = useState("");
     const [accept, setAccept] = useState(false);
     const [errorPass, setErrorPass] = useState(false)
+    const {linkProxy} = useAuth()
 
 
     const handelPassword = (password) => {
@@ -36,7 +38,7 @@ function Register(){
         
 
         try{
-            let res = await axios.post("http://namehost.runasp.net/api/Account/Register", {
+            let res = await axios.post(`${linkProxy}http://namehost.runasp.net/api/Account/Register`, {
                 header:{
                     "Content-Type": "application/json"
                 },

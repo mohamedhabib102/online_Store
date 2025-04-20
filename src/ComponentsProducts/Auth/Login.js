@@ -11,7 +11,7 @@ function Login(){
     const [password, setPassword] = useState("");
     const [errMesEmal, seterrMesEmal] = useState(false);
     const [errMesPass, seterrMesPass] = useState(false);
-    const { login, saveName} = useAuth()
+    const { login, saveName, linkProxy} = useAuth()
     const currentLink = document.location.href;
     if (document.location.href === currentLink){
         document.title = "Login"
@@ -19,7 +19,7 @@ function Login(){
     async function submitRegister(e){
         e.preventDefault()
         try{
-            let res = await axios.post("https://cors-anywhere.herokuapp.com/http://namehost.runasp.net/api/Account", {
+            let res = await axios.post(`${linkProxy}http://namehost.runasp.net/api/Account`, {
                 email: email,
                 password: password  
             },{
@@ -27,7 +27,7 @@ function Login(){
                 "Content-Type": "application/json"
             }})
             const token = res.data.token;
-            const roleRes = await axios.get("https://cors-anywhere.herokuapp.com/http://namehost.runasp.net/api/Account/UserRoles", {
+            const roleRes = await axios.get(`${linkProxy}http://namehost.runasp.net/api/Account/UserRoles`, {
                 params: { email: email },
                 headers: {
                     Authorization: `Bearer ${token}`, 
