@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [priceTotal, setPriceTotal] = useState(Cookies.get("priceTotal") || "")
     const [lengths, setLengths] = useState(Cookies.get("lengths") || "")
     const linkProxy = "https://cors-anywhere.herokuapp.com/"
+    const [handleShowProducts, setHandleShowProducts] =  useState(false)
 
     const login = (token, roles) => {
         Cookies.set("authToken", token, { expires: 36500, secure: true, sameSite: 'Strict' });
@@ -59,7 +60,9 @@ export const AuthProvider = ({ children }) => {
             nameUser,
             lengths,
             priceTotal,
-            linkProxy
+            linkProxy,
+            setHandleShowProducts,
+            handleShowProducts
             }}>
             {children}
         </AuthContext.Provider>

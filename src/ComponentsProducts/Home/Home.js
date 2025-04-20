@@ -1,10 +1,16 @@
+import { useAuth } from "../Context/Context";
 import Navbar from "../Navbar/Navbar"
 import Product from "../Products/Product";
 import landing from "../images/landing.jpeg"
 import "./Home.css";
 
 
+
 function Home(){
+    const {setHandleShowProducts, handleShowProducts} =  useAuth()
+    useEffect(() => {
+        setHandleShowProducts(true);
+    }, [setHandleShowProducts]);
     return(
         <>
         <Navbar />
@@ -21,7 +27,7 @@ function Home(){
                 </div>
             </div>
         </div>
-        <Product />
+        <Product handleShowProducts={handleShowProducts}/>
         </>
     )
 }

@@ -16,7 +16,7 @@ const arrImage = [img1, img2, img3, img4, img5, img6]
 
 
 
-function Product(){
+function Product(handleShowProducts){
     const { authToken, linkProxy} = useAuth();
     const [message, setMessage] = useState("");
     const [visible, setVisible] = useState(false);
@@ -77,7 +77,9 @@ function Product(){
     };
     return(
     <>
-    <Navbar />
+    {!handleShowProducts ? (
+      <Navbar />      
+    ) : ""}
         <div className="products">
             {
                 message && (
