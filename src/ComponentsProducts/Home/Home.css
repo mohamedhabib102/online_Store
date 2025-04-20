@@ -1,0 +1,48 @@
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.landing{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--main-color);
+    height: 100%;
+    .content-home{
+        justify-content: space-between;
+        .title{
+            width: 50%;
+            text-align: left;
+            padding: 30px 10px;
+            @media (max-width: 767px){
+                &{
+                    width: 100%;
+                    padding: 20px 15px;
+                    text-align: center;
+                }
+            }
+            h2{
+                margin-bottom: 10px;
+                span{
+                    color: #EEE;
+                }
+            }
+            p{
+                margin: 0;
+                color: #eee;
+                font-weight: 500;
+                font-style: italic;
+            }
+        }
+        div { 
+            text-align: center;
+        > img{
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+    }
+}

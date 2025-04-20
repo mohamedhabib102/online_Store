@@ -1,0 +1,27 @@
+
+
+
+
+.brands{
+    padding-top: 40px;
+    padding-top: 40px;
+    .brands-content{
+        .brand{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            &:not(:last-child){
+                margin-bottom: 15px;
+            }
+            h2{
+                font-size: 24px;
+            }
+            p{
+                color: var(--main-color);
+            }
+        }
+    }
+}

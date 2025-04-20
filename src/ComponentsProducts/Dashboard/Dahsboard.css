@@ -1,0 +1,93 @@
+
+ul{
+    list-style: none; 
+}
+
+.dashboard{
+    display: flex;
+    .sidebar{
+        width: 25%;
+        padding: 15px 10px;
+        ul {
+            padding: 0;
+        li a{
+            display: block;
+            text-decoration: none;
+            font-size: 19px;
+            color: #000;
+            font-weight: 500;
+            background-color: #EEE;
+            margin-bottom: 4px;
+            border-radius: 6px;
+            padding: 6px;
+            transition: .3s;
+            &.active,
+            &:hover{
+                background-color: var(--main-color);
+                color: white;
+            }
+        }
+    }
+    }
+    .content-of-side{
+        width: 75%;
+        padding: 15px;
+    }
+}
+
+table tbody tr td button{
+    padding: 8px;
+    background-color: rgb(231, 29, 29);
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    transition: .3s;
+    &:hover{
+        background-color: #cd2121;
+    }
+}
+
+
+.add-newproduct button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    color: #333;
+    background-color: #EEE;
+    transition: .3s;
+    &:hover{
+        background-color: var(--main-color);
+        color: #FFF;
+    }
+}
+
+/* Here All Forms Of Pages */
+.form{
+    display: flex;
+    flex-direction: column;
+    input{
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid var(--normal-color);
+        border-radius: 6px;
+        outline: none;
+    }
+    select{
+        padding: 6px;
+        border: 1px solid var(--normal-color);
+        margin-bottom: 10px;
+    }
+    button{
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        background-color: var(--normal-color);
+        transition: .3s;
+        &:hover{
+            background-color: var(--main-color);
+            color: #FFF;
+        }
+    }
+}

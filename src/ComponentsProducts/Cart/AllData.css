@@ -1,0 +1,136 @@
+
+
+
+
+.payment-button{
+    display: flex;
+    padding: 10px 15px;
+    background-color: var(--normal-color);
+    color: #333;
+    text-decoration: none;
+    transition: .3s;
+    text-align: center;
+    font-size: 19px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap: 12px;
+    > i{
+        font-size: 21px;
+    }
+    &:hover{
+        background-color: var(--main-color);
+        color: white;
+    }
+}
+
+.message-payment{
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    color: var(--main-color);
+    border-right: 3px solid var(--main-color);
+}
+.payment-methods{
+    padding: 20px 15px;
+    .methods{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        .method{
+            text-align: center;
+            width: calc(85% / 3);
+            background-color: #EEE;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .3s;
+            &.active{
+                background-color: var(--main-color);
+                i{
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .detalis{
+        h4{
+            color: var(--main-color);
+            margin-bottom: 5px;
+        }
+        > div{
+            line-height: 1.7;
+            color: #444;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        form{
+            padding-top: 10px;
+            margin-top: 10px;
+            .date-inputs{
+                > input{
+                    width: 100%;
+                    border: 1px solid var(--normal-color);
+                    padding: 8px;
+                    border-radius: 6px;
+                    outline: none;
+                    transition: .3s;
+                    margin-bottom: 15px;
+                    &:focus{
+                        border-color: var(--main-color);
+                    }
+                }
+            }
+
+            .box input{
+                width: 100%;
+                padding: 8px;
+                border: 1px solid var(--normal-color);
+                border-radius: 6px;
+                outline: none;
+                transition: .3s;
+                &:focus{
+                    border-color: var(--main-color)
+                }
+            }
+            .box {
+                position: relative;
+                margin-bottom: 15px;
+            label{
+                position: absolute;
+                left: 8px;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: .3s;
+            }
+        }
+        .box input:focus ~ label,
+        .box input:valid ~ label{
+            top: -1px;
+            font-size: 12px;
+            background-color: #fff;
+            padding: 4px;
+            color: var(--main-color);
+        }
+        button{
+            width: 70%;
+            margin: auto;
+            display: block;
+            padding: 8px;
+            border: none;
+            background-color: var(--normal-color);
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+            transition: .3s;
+            &:hover{
+                background-color: var(--main-color);
+            }
+        }
+        }
+    }
+}
