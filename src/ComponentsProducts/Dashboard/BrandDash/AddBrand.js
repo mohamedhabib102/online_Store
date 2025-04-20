@@ -6,14 +6,14 @@ import "../Dahsboard.css"
 
 
 function AddBrand(){
-    const { authToken } = useAuth()
+    const { authToken , linkProxy} = useAuth()
     const [name, setName] = useState("");
     const [dec, setDec] = useState("");
     const navigate = useNavigate()
     async function AddData(e){
         e.preventDefault()
         try{
-            let res = await axios.post("http://namehost.runasp.net/api/Brand",
+            let res = await axios.post(`${linkProxy}http://namehost.runasp.net/api/Brand`,
                 {
                     name: name,
                     description: dec,

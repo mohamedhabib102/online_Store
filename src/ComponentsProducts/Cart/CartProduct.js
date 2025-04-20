@@ -9,7 +9,7 @@ import cartEmpty from "../images/cart-empty.jfif"
 function CartProduct() {
     const [carts, setCarts] = useState([]);
     const [totalP, setTotalP] = useState("")
-    const { authToken, savePrice } = useAuth();
+    const { authToken, savePrice, linkProxy} = useAuth();
     useEffect(() => {
         fetchCart();
     }, []);
@@ -25,7 +25,7 @@ function CartProduct() {
 
     const fetchCart = async () => {
         try {
-            const res = await axios.get("http://namehost.runasp.net/api/Cart", {
+            const res = await axios.get(`${linkProxy}http://namehost.runasp.net/api/Cart`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                     "Content-Type": "application/json"
@@ -45,7 +45,7 @@ function CartProduct() {
             const productDetails = await Promise.all(
                 cartItems.map(async (cartItem) => {
                     try {
-                        const response = await axios.get(`http://namehost.runasp.net/api/Product/${cartItem.productId}`, {
+                        const response = await axios.get(`${linkProxy}http://namehost.runasp.net/api/Product/${cartItem.productId}`, {
                             headers: {
                                 Authorization: `Bearer ${authToken}`,
                                 "Content-Type": "application/json"
@@ -67,7 +67,7 @@ function CartProduct() {
 
     const deleteCartItem = async (wishlistId) => {
         try {
-            const response = await axios.delete(`http://namehost.runasp.net/api/Cart/${wishlistId}`, {
+            const response = await axios.delete(`${linkProxy}http://namehost.runasp.net/api/Cart/${wishlistId}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                     "Content-Type": "application/json"

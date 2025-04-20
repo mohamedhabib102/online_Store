@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function AddProduct(){
-    const { authToken } = useAuth()
+    const { authToken, linkProxy } = useAuth()
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [des, setDes] = useState("");
@@ -16,7 +16,7 @@ function AddProduct(){
     
     
     useEffect (() => {
-        axios.get("http://namehost.runasp.net/api/Brand",{
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Brand`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -28,7 +28,7 @@ function AddProduct(){
     async function AddData(e){
         e.preventDefault()
         try{
-            let res = await axios.post("http://namehost.runasp.net/api/Product",
+            let res = await axios.post(`${linkProxy}http://namehost.runasp.net/api/Product`,
                 {
                     name: name,
                     description: des,

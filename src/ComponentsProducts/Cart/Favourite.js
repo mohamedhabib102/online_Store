@@ -5,7 +5,7 @@ import axios from "axios";
 import cartEmpty from "../images/cart-empty.jfif"
 
 function Favourite() {
-    const { authToken } = useAuth();
+    const { authToken, linkProxy } = useAuth();
     const [favos, setFavos] = useState([]);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function Favourite() {
 
     const fetchFavo = async () => {
         try {
-            const res = await axios.get("http://namehost.runasp.net/api/WishList", {
+            const res = await axios.get(`${linkProxy}http://namehost.runasp.net/api/WishList`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                     "Content-Type": "application/json",
@@ -25,7 +25,7 @@ function Favourite() {
             const productDetails = await Promise.all(
                 favoItems.map(async (wishlistItem) => {
                     try {
-                        const response = await axios.get(`http://namehost.runasp.net/api/Product/${wishlistItem.productId}`, {
+                        const response = await axios.get(`${linkProxy}http://namehost.runasp.net/api/Product/${wishlistItem.productId}`, {
                             headers: {
                                 Authorization: `Bearer ${authToken}`,
                                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ function Favourite() {
 
     const deleteCartItem = async (wishlistId) => {
         try {
-            const response = await axios.delete(`http://namehost.runasp.net/api/WishList/${wishlistId}`, {
+            const response = await axios.delete(`${linkProxy}http://namehost.runasp.net/api/WishList/${wishlistId}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                     "Content-Type": "application/json",

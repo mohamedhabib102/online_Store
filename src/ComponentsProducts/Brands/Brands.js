@@ -2,14 +2,16 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar"
 import { useEffect, useState} from "react";
 import "./Brand.css"
+import { useAuth } from "../Context/Context";
 
 
 
 
 function GetBrand(){
     const [brand, setBrand] = useState([]);
+    const {linkProxy} = useAuth()
     useEffect(() => {
-        axios.get("http://namehost.runasp.net/api/Brand")
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Brand`)
         .then((res) => setBrand(res.data))
     }, [])
     return(

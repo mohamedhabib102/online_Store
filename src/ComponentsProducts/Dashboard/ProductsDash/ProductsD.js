@@ -5,14 +5,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function ProductsD(){
-    const { authToken } = useAuth()
+    const { authToken, linkProxy } = useAuth()
     const [product, setProduct] = useState([]);
     useEffect(() => {
         getAllProducts()
     }, [])
 
     const getAllProducts = () => {
-        axios.get("http://namehost.runasp.net/api/Product",{
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Product`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -23,7 +23,7 @@ function ProductsD(){
         .catch((err) => console.log(err))
     }
     const deleteProduct = (id) => {
-        axios.delete(`http://namehost.runasp.net/api/Product/${id}`,{
+        axios.delete(`${linkProxy}http://namehost.runasp.net/api/Product/${id}`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`

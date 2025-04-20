@@ -7,12 +7,12 @@ import "../Dahsboard.css";
 
 
 function EditBrand(){
-    const { authToken } = useAuth()
+    const { authToken, linkProxy } = useAuth()
     const navigate = useNavigate()
     let  { Id } = useParams();
     const [edit, setEdit] = useState({name: "", description: ""})
     useEffect(() => {
-        axios.get(`http://namehost.runasp.net/api/Brand/${Id}`,{
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Brand/${Id}`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -24,7 +24,7 @@ function EditBrand(){
     async function SendData(e){
         e.preventDefault()
         try{
-            let res = await axios.put(`http://namehost.runasp.net/api/Brand/${Id}`,
+            let res = await axios.put(`${linkProxy}http://namehost.runasp.net/api/Brand/${Id}`,
                 edit,
                 {
                     headers: {

@@ -5,14 +5,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Brand(){
-    const { authToken } = useAuth()
+    const { authToken , linkProxy} = useAuth()
     const [brand, setBrand] = useState([]);
     useEffect(() => {
         getAllBarnds()
     }, [])
 
     const getAllBarnds = () => {
-        axios.get("http://namehost.runasp.net/api/Brand",{
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Brand`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -23,7 +23,7 @@ function Brand(){
         .catch((err) => console.log(err))
     }
     const deleteBrand = (id) => {
-        axios.delete(`http://namehost.runasp.net/api/Brand/${id}`,{
+        axios.delete(`${linkProxy}http://namehost.runasp.net/api/Brand/${id}`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`

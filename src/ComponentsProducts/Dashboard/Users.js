@@ -4,14 +4,14 @@ import  { useAuth } from "../Context/Context"
 import axios from "axios";
 
 function Users(){
-    const { authToken } = useAuth()
+    const { authToken, linkProxy } = useAuth()
     const [user, setUser] = useState([]);
     useEffect(() => {
         getAllUsers()
     }, [])
 
     const getAllUsers = () => {
-        axios.get("http://namehost.runasp.net/api/Account",{
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Account`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -22,7 +22,7 @@ function Users(){
         .catch((err) => console.log(err))
     }
     const deleteUser = (id) => {
-        axios.delete(`http://namehost.runasp.net/api/Account?id=${id}`,{
+        axios.delete(`${linkProxy}http://namehost.runasp.net/api/Account?id=${id}`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`

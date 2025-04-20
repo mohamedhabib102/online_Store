@@ -7,13 +7,13 @@ import "../Dahsboard.css"
 
 
 function EditProduct(){
-    const { authToken } = useAuth()
+    const { authToken, linkProxy } = useAuth()
     let  { Id } = useParams();
     const navigate  = useNavigate()
     const [brand, setBrand] = useState([])
     const [edit, setEdit] = useState({name: "", description: "", price: 0, photo: "", brandId: 0})
     useEffect(() => {
-        axios.get(`http://namehost.runasp.net/api/Product/${Id}`,{
+        axios.get(`${linkProxy}http://namehost.runasp.net/api/Product/${Id}`,{
             headers:{
                 "Content-Type": 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -25,7 +25,7 @@ function EditProduct(){
     }, [])
     const fetchBrands = async () => {
         try {
-            const response = await axios.get('http://namehost.runasp.net/api/Brand', {
+            const response = await axios.get(`${linkProxy}http://namehost.runasp.net/api/Brand`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -46,7 +46,7 @@ function EditProduct(){
                 photoName: edit.photo,
                 brandId: edit.brandId
             }
-            let res = await axios.put(`http://namehost.runasp.net/api/Product/${Id}`, 
+            let res = await axios.put(`${linkProxy}http://namehost.runasp.net/api/Product/${Id}`, 
                 payload, 
                 {
                 headers: {

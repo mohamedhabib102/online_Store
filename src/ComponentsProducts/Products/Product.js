@@ -17,20 +17,20 @@ const arrImage = [img1, img2, img3, img4, img5, img6]
 
 
 function Product(){
-    const { authToken} = useAuth();
+    const { authToken, linkProxy} = useAuth();
     const [message, setMessage] = useState("");
     const [visible, setVisible] = useState(false);
     const [product, setProduct] = useState([])
     useEffect(() => {
         const getProducts = async () => {
-            const res = await axios.get("http://namehost.runasp.net/api/Product");
+            const res = await axios.get(`${linkProxy}http://namehost.runasp.net/api/Product`);
             setProduct(res.data)
         }
         getProducts()
     }, [])
     const addToCarts = async (product, quantity) => {
         try{
-            const res = await axios.post("http://namehost.runasp.net/api/Cart",
+            const res = await axios.post(`${linkProxy}http://namehost.runasp.net/api/Cart`,
                 {
                     productId: product,
                     quantity: quantity
@@ -48,7 +48,7 @@ function Product(){
     }
     const addToFavos = async (product) => {
         try{
-            const res = await axios.post("http://namehost.runasp.net/api/WishList",
+            const res = await axios.post(`${linkProxy}http://namehost.runasp.net/api/WishList`,
                 {
                     productId: product,
                 },
