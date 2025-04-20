@@ -16,8 +16,8 @@ const arrImage = [img1, img2, img3, img4, img5, img6]
 
 
 
-function Product(handleShowProducts){
-    const { authToken, linkProxy} = useAuth();
+function Product(){
+    const { authToken, linkProxy, setHandleShowProducts, handleShowProducts} = useAuth();
     const [message, setMessage] = useState("");
     const [visible, setVisible] = useState(false);
     const [product, setProduct] = useState([])
@@ -27,6 +27,7 @@ function Product(handleShowProducts){
             setProduct(res.data)
         }
         getProducts()
+        setHandleShowProducts(false);
     }, [])
     const addToCarts = async (product, quantity) => {
         try{
